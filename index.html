@@ -24,7 +24,7 @@
 
 *{ box-sizing:border-box; margin:0; padding:0; }
 
-html, body{ height:100%; overflow:hidden; overscroll-behavior:none; }
+html, body{ height:100%; width:100%; overflow:hidden; overscroll-behavior:none; }
 
 body{
   background:var(--bg);
@@ -68,6 +68,7 @@ body{
   position:fixed; top:0; left:0; right:0; bottom:0;
   padding:150px 11vw 90px 8vw;
   overflow-y:auto;
+  overflow-x:hidden;
   -webkit-overflow-scrolling:touch;
   z-index:1;
   display:flex; align-items:flex-start;
@@ -86,6 +87,8 @@ body{
 }
 @keyframes blink{ 50%{opacity:0;} }
 @media(prefers-reduced-motion:reduce){ .cursor{ animation:none; } }
+
+.sticky-cmd{ position:sticky; top:0; z-index:5; padding-bottom:2px; }
 
 .section-row{ display:flex; align-items:flex-start; justify-content:flex-start; gap:36px; margin-top:18px; width:100%; }
 .section-text{ flex:1 1 auto; min-width:0; max-width:600px; text-align:left; }
@@ -108,16 +111,20 @@ body{
 
 @media(max-width:860px){
   #header{ padding:20px 6vw 0; }
-  #terminal-viewport{ padding:112px 6vw 66px 6vw; align-items:flex-start; }
-  body{ font-size:16px; }
-  .term-line{ font-size:16px; }
-  .output{ font-size:14px; }
-  .section-row{ flex-direction:column; align-items:center; gap:6px; margin-top:14px; }
+  #terminal-viewport{ padding:104px 6vw 60px 6vw; align-items:flex-start; overflow-x:hidden; }
+  body{ font-size:13px; }
+  .term-line{ font-size:13px; }
+  .output{ font-size:12px; }
+  .section-row{ flex-direction:column; align-items:center; gap:6px; margin-top:12px; }
   .section-text{ max-width:100%; width:100%; order:1; }
-  .icon-slot{ order:0; width:100%; min-height:100px; justify-content:center; align-items:center; margin-bottom:8px; flex:0 0 auto; }
-  .ascii-icon{ font-size:10px; }
-  .title{ font-size:clamp(28px,9vw,40px) !important; }
-  .body-text{ font-size:15px !important; }
+  .icon-slot{ order:0; width:100%; min-height:150px; justify-content:center; align-items:center; margin-bottom:8px; flex:0 0 auto; overflow:hidden; }
+  .ascii-icon{ font-size:8px; }
+  .title{ font-size:clamp(24px,8vw,34px) !important; }
+  .body-text{ font-size:12px !important; }
+  .svc-item{ font-size:13px !important; }
+  .proj .name{ font-size:14px !important; }
+  .proj .desc{ font-size:12px !important; }
+  .team-row{ font-size:13px !important; }
 }
 
 .title{
@@ -472,7 +479,7 @@ a{ color:var(--accent); }
   /* ---------------- shared command+title header ---------------- */
   async function baseTitledCommand(textWrap, cmd, titleText){
     const cmdLine = document.createElement('div');
-    cmdLine.className = 'term-line';
+    cmdLine.className = 'term-line sticky-cmd';
     textWrap.appendChild(cmdLine);
     const prefix = document.createElement('span');
     prefix.className = 'prompt-tag'; prefix.textContent = 'Router# ';
