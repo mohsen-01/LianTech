@@ -91,7 +91,7 @@ body{
 .sticky-cmd{ position:sticky; top:0; z-index:5; padding-bottom:2px; }
 
 .section-row{ display:flex; align-items:flex-start; justify-content:flex-start; gap:36px; margin-top:18px; width:100%; }
-.section-text{ flex:1 1 auto; min-width:0; max-width:600px; text-align:left; }
+.section-text{ flex:1 1 auto; min-width:0; max-width:800px; text-align:left; }
 
 .icon-slot{ flex:0 0 260px; display:flex; align-items:center; justify-content:flex-start; }
 
@@ -237,7 +237,7 @@ a{ color:var(--accent); }
 
 <div id="header">
   <div class="brand">LianTech.Group</div>
-  <div class="rule">----------------------------------------------------------------------</div>
+  <div class="rule">--------------------------------------------------------------------------</div>
 </div>
 
 <div id="boot-loader">
@@ -323,7 +323,7 @@ a{ color:var(--accent); }
     const stages = ['[■□□□□□□□□□] 10%','[■■□□□□□□□□] 20%','[■■■■□□□□□□] 40%','[■■■■■□□□□□] 50%','[■■■■■■■□□□] 70%','[■■■■■■■■□□] 80%','[■■■■■■■■■■] 100%'];
     for(let i=0;i<stages.length;i++){
       l2.textContent = stages[i];
-      await sleep(90);
+      await sleep(150);
     }
     await sleep(150);
   }
@@ -354,13 +354,13 @@ a{ color:var(--accent); }
       const line = document.createElement('div');
       line.className = 'term-line';
       bootLines.appendChild(line);
-      await typeText(line, raw, 20);
+      await typeText(line, raw, 10);
       if(i === script.length - 1){
         const cur = document.createElement('span');
         cur.className = 'cursor';
         line.appendChild(cur);
       }
-      await sleep(110);
+      await sleep(60);
     }
     await sleep(250);
   }
@@ -497,7 +497,7 @@ a{ color:var(--accent); }
     const cmdSpan = document.createElement('span');
     cmdLine.appendChild(prefix); cmdLine.appendChild(cmdSpan);
     trackText(cmdSpan);
-    await typeText(cmdSpan, cmd, 20);
+    await typeText(cmdSpan, cmd, 40);
     const cur = document.createElement('span');
     cur.className = 'cursor';
     cmdLine.appendChild(cur);
